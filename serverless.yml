@@ -26,6 +26,14 @@ provider:
   lambdaHashingVersion: 20201221
   profile: default
 
+plugins:
+  - serverless-s3-sync
+
+custom:
+  s3Sync:
+    - bucketName: demobucket-xyz
+      localDir: img
+
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -62,6 +70,13 @@ provider:
 functions:
   hello:
     handler: handler.hello
+
+resources:
+  Resources:
+    DemoBucketUpload:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: demobucket-xyz
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
