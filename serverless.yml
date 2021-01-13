@@ -27,10 +27,12 @@ provider:
   profile: default
   environment:
     tableName: ${self:custom.tableName}
+    bucketName: ${self:custom.bucketName}
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:*
+        - s3:*
       Resource: '*'
 
 plugins:
@@ -42,8 +44,9 @@ package:
 
 custom:
   tableName: player-point
+  bucketName: newdemobucket-xyz
   s3Sync:
-    - bucketName: demobucket-xyz 
+    - bucketName: ${self:custom.bucketName}
       localDir: img
 
 # you can overwrite defaults here
@@ -101,13 +104,27 @@ functions:
           path: create-player-score/{ID}
           method: POST
           cors: true
+  getFile:
+    handler: lambdas/endpoints/getFile.handler
+    events:
+      - http:
+          path: get-file/{fileName}
+          method: GET
+          cors: true
+  createFile:
+    handler: lambdas/endpoints/createFile.handler
+    events:
+      - http:
+          path: create-file/{fileName}
+          method: POST
+          cors: true
 
 resources:
   Resources:
     DemoBucketUpload:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: demobucket-xyz
+        BucketName: ${self:custom.bucketName}
     MyDynamoDbTable:
       Type: AWS::DynamoDB::Table 
       Properties:
