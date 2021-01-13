@@ -1,4 +1,4 @@
-const Responses = require("./API_RESPONSES");
+const Responses = require("../common/API_RESPONSES");
 exports.handler = async(event) =>{
     console.log(event);
     if(!event.pathParameters || !event.pathParameters.ID){
