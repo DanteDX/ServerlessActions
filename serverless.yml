@@ -141,6 +141,18 @@ functions:
           method: POST
           cors: true
           private: true
+  proxy:
+    handler: lambdas/endpoints/proxy.handler
+    events:
+      - http:
+          path: chuck-norris/{proxy+}
+          method: ANY
+          integration: http-proxy
+          request:
+            uri: http://api.icndb.com/{proxy}
+            parameters:
+              paths:
+                proxy: true
 
 resources:
   Resources:

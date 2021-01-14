@@ -7,3 +7,4 @@ endpoints:
   POST - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/create-player-score/{ID}
   GET - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/get-file/{fileName}
   POST - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/create-file/{fileName}
+  ANY - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/chuck-norris/{proxy+}
