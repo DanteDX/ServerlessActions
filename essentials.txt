@@ -1,3 +1,10 @@
+Serverless: Stack update finished...
+Service Information
+service: client
+stage: dev
+region: us-east-1
+stack: client-dev
+resources: 60
 api keys:
   myFreeApiKey: pDcPLmkSGk6d7BWLqKudE7EJfbjt76wktmImJIb6
   myPaidApiKey: LeIN0jhQwm5MYMfWqgLzp97COAfQKOwK7xoX1uGS
@@ -8,3 +15,10 @@ endpoints:
   GET - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/get-file/{fileName}
   POST - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/create-file/{fileName}
   ANY - https://n6c1liul34.execute-api.us-east-1.amazonaws.com/dev/chuck-norris/{proxy+}
+functions:
+  getUser: client-dev-getUser
+  getPlayerScore: client-dev-getPlayerScore
+  createPlayerScore: client-dev-createPlayerScore
+  getFile: client-dev-getFile
+  createFile: client-dev-createFile
+  proxy: client-dev-proxy
