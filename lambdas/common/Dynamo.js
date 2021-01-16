@@ -28,6 +28,18 @@ const Dynamo = {
             throw new Error('There was Error with ID ${data.ID} and TableName ${TableName}');
         }
         return data;
+    },
+    async update({tableName,primaryKey,primaryKeyValue,updateKey,updateValue}){
+        const params = {
+            TableName: tableName,
+            Key: {[primaryKey]: primaryKeyValue},
+            UpdateExpression: `set ${updateKey} = :updateValue`,
+            ExpressionAttributeValues:{
+                ':updateValue': updateValue
+            }
+        };
+        return documentClient.update(params).promise();
     }
+    
 };
 module.exports = Dynamo;
