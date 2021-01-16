@@ -125,6 +125,13 @@ functions:
           path: get-game-score/{game}
           method: GET
           cors: true
+  getGamesForPlayer:
+    handler: lambdas/endpoints/getGamesForPlayer.handler
+    events:
+      - http:
+          path: get-game-for-player/{playerID}
+          method: GET
+          cors: true
   createPlayerScore:
     handler: lambdas/endpoints/createPlayerScore.handler
     events:
