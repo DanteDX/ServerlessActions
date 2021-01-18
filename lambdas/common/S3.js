@@ -11,12 +11,12 @@ const S3 = {
         if(!data){
             throw new Error(`Failed to get file ${fileName} from bucket ${bucket}`);
         }
-        if(fileName.slice(fileName.length - 4, fileName.length) === "json"){
-            data = data.Body.toString();
-        }
+        // if(fileName.slice(fileName.length - 4, fileName.length) === "json"){
+        //     data = data.Body.toString();
+        // }
+        data = data.Body.toString();
         return data;
     },
-
     async write(data,fileName,bucket){
         const params = {
             Bucket: bucket,

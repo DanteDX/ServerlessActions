@@ -63,6 +63,13 @@ functions:
           path: image-upload
           method: POST
           cors: true
+  getImage:
+    handler: lambdas/endpoints/getImage.handler
+    events:
+      - http:
+          path: get-image/{fileName}
+          method: GET
+          cors: true
   getUser:
     handler: lambdas/endpoints/getUser.handler
     events:
