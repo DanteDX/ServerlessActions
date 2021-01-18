@@ -25,7 +25,7 @@ exports.handler = async (event) =>{
             return Responses._400({message:"mime types don't match"});
         }
         const name = uuid();
-        const key = `${name}.${detectedExt}`;
+        const key = `uploads/${name}.${detectedExt}`;
         console.log(`writing image to bucket called ${key}`);
 
         await s3.putObject({

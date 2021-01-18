@@ -17,12 +17,15 @@ const S3 = {
         data = data.Body.toString();
         return data;
     },
-    async write(data,fileName,bucket){
+    async write(data,fileName,bucket,ACL,ContentType){
         const params = {
             Bucket: bucket,
-            Body: JSON.stringify(data),
-            Key: fileName
+            Body: Buffer.isBuffer(data) ? data : JSON.stringify(data),
+            Key: fileName,
+            ACL,
+            ContentType
         };
+        console.log('params',params);
         const newData = await s3Client.putObject(params).promise();
         if(!newData){
             throw new Error("There was error writing the file");
