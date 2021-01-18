@@ -2,7 +2,6 @@ const Responses = require("../common/API_RESPONSES");
 const S3 = require("../common/S3");
 import jimp from "jimp";
 
-
 exports.handler = async (event) =>{
     const {Records} = event;
     // Records contains only info about image, no image data
